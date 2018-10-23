@@ -1,31 +1,40 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import Input from "../presentational/Input";
-
+import Paragraph from "../presentational/Paragraph";
+import ErrorBoundary from "./ErrorBoundary";
 class FormContainer extends Component {
   constructor() {
     super();
     this.state = {
-      seo_title: ""
+      react_title: '',
+      customer_name: 'Himanshu Pandey'
     };
-    this.handleChange = this.handleChange.bind(this);
   }
   handleChange(event) {
     this.setState({ [event.target.id]: event.target.value });
   }
   render() {
-    const { seo_title } = this.state;
+    const { react_title, customer_name } = this.state;
+    const p = `When we create event handler method, we always need to add this to constructor,
+    to bind this. Quite tiresome. To be honest, there is no sense to create constructor
+    method only for binding your method ${customer_name}`
     return (
+      <>
       <form id="article-form">
         <Input
-          text="SEO title"
-          label="seo_title"
+          text="React title"
+          label="react_webpack4"
           type="text"
-          id="seo_title"
-          value={seo_title}
-          handleChange={this.handleChange}
+          id="react_title"
+          value={react_title}
+          handleChange={(e) => this.handleChange(e)}
         />
       </form>
+      <ErrorBoundary>
+        <Paragraph p={p}/>
+      </ErrorBoundary>
+      </>
     );
   }
 }
