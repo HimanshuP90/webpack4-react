@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import Input from "../presentational/Input";
 import Paragraph from "../presentational/Paragraph";
-
+import ErrorBoundary from "./ErrorBoundary";
 class FormContainer extends Component {
   constructor() {
     super();
@@ -31,7 +31,9 @@ class FormContainer extends Component {
           handleChange={(e) => this.handleChange(e)}
         />
       </form>
+      <ErrorBoundary>
         <Paragraph p={p}/>
+      </ErrorBoundary>
       </>
     );
   }
