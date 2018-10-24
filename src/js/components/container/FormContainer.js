@@ -8,14 +8,23 @@ class FormContainer extends Component {
     super();
     this.state = {
       react_title: '',
-      customer_name: 'Himanshu Pandey'
+      customer_name: 'Himanshu Pandey',
+      jsonData:''
     };
   }
+  
+  componentWillMount(){
+    fetch('https://jsonplaceholder.typicode.com/todos')
+      .then(response => response.json())
+      .then(json => this.setState({jsonData: json}))
+  }
+
   handleChange(event) {
     this.setState({ [event.target.id]: event.target.value });
   }
   render() {
-    const { react_title, customer_name } = this.state;
+    const { react_title, customer_name, jsonData } = this.state;
+    const obj = jsonData && jsonData.map((obj) => { return obj.title })
     const p = `When we create event handler method, we always need to add this to constructor,
     to bind this. Quite tiresome. To be honest, there is no sense to create constructor
     method only for binding your method ${customer_name}`
@@ -32,7 +41,7 @@ class FormContainer extends Component {
         />
       </form>
       <ErrorBoundary>
-        <Paragraph p={p}/>
+        <Paragraph p={obj}/>
       </ErrorBoundary>
       </>
     );
