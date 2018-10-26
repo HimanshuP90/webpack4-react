@@ -1,0 +1,110 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  #app {
+    width: 300px;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%)
+  }
+  
+  .news-card {
+    position: relative;
+    width: 300px;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+  }
+  
+  .news-card:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.30), 0 10px 10px rgba(0, 0, 0, 0.33);
+  }
+  
+  .news-card .image {
+    max-width: 100%;
+    height: auto;
+    opacity: 0.8;
+  }
+  
+  .news-card .news-text {
+    padding: 5px 10px;
+  }
+  
+  .news-card .title {
+    color: #505050;
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+  
+  .news-card .description {
+    color: #595959;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .news-card .url {
+    color: #595959;
+    font-size: 16px;
+  }
+  
+  .news-card .url:hover {
+    color: #404040;
+  }
+  
+  .news-card .author {
+    color: #959595;
+    font-size: 12px;
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  .news-card .publishedAt {
+    color: #959595;
+    font-size: 12px;
+    display: inline-block;
+  }
+  
+  .news-card .topic {
+    position: absolute;
+    background: #FF8A65;
+    font-size: 12px;
+    color: #fff;
+    padding: 4px 10px;
+    font-weight: bold;
+    top: 0;
+    right: 0;
+  }
+  
+  
+  /* -----
+  SVG Icons - svgicons.sparkk.fr
+  ----- */
+  
+  .svg-icon {
+    width: 1em;
+    height: 1em;
+    position: relative;
+    top: 1px;
+  }
+  
+  .svg-icon path,
+  .svg-icon polygon,
+  .svg-icon rect {
+    fill: #959595;
+  }
+  
+  .svg-icon circle {
+    stroke: #959595;
+    stroke-width: 1;
+  }
+  
+  .svg-time {
+    top: 2px;
+  }
