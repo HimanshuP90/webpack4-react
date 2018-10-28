@@ -4,6 +4,25 @@ import Input from "../presentational/Input";
 import Paragraph from "../presentational/Paragraph";
 import ErrorBoundary from "./ErrorBoundary";
 import style from "../../../../src/main.css";
+import Hooks from './Hooks';
+
+function ListItem(props) {
+  return <li>{props.value}</li>;
+}
+
+function NumberList(props) {
+  const numbers = props.numbers;
+  const listItems = numbers.map((number) =>
+    <ListItem key={number.toString()}
+              value={number} />
+
+  );
+  return (
+    <ul>
+      {listItems}
+    </ul>
+  );
+}
 
 class FormContainer extends Component {
   constructor() {
@@ -37,6 +56,7 @@ class FormContainer extends Component {
     this.setState({ [event.target.id]: event.target.value });
   }
   render() {
+    const numbers = [1, 2, 3, 4, 5];
     const { react_title, customer_name, jsonData, newsData } = this.state;
     const obj = jsonData && jsonData.map((obj) => { return obj.title })
     const p = `When we create event handler method, we always need to add this to constructor,
@@ -47,6 +67,7 @@ class FormContainer extends Component {
     console.log(news);
     return (
       <>
+      <Hooks />
       <form id="article-form">
         <Input
           text="React title"
@@ -57,6 +78,7 @@ class FormContainer extends Component {
           handleChange={(e) => this.handleChange(e)}
         />
       </form>
+      <NumberList numbers={numbers} />
       <ErrorBoundary>
         <Paragraph p={p}/>
       </ErrorBoundary>
