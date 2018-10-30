@@ -4,7 +4,8 @@ import Input from "../presentational/Input";
 import Paragraph from "../presentational/Paragraph";
 import ErrorBoundary from "./ErrorBoundary";
 import style from "../../../../src/main.css";
-import InfiniteScroll from './InfiniteSrcoll';
+import Hooks from './Hooks';
+import InfiniteLoader from './InfiniteLoader';
 
 function ListItem(props) {
   return <li>{props.value}</li>;
@@ -67,6 +68,7 @@ class FormContainer extends Component {
     console.log(news);
     return (
       <>
+      <InfiniteLoader />
       <form id="article-form">
         <Input
           text="React title"
@@ -88,4 +90,4 @@ class FormContainer extends Component {
 export default FormContainer;
 
 const wrapper = document.getElementById("create-article-form");
-wrapper ? ReactDOM.render(<InfiniteScroll />, wrapper) : false;
+wrapper ? ReactDOM.render(<InfiniteLoader />, wrapper) : false;
