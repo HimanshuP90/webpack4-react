@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import request from "superagent";
 
 class InfiniteLoader extends Component {
@@ -24,7 +24,7 @@ class InfiniteLoader extends Component {
         window.innerHeight + document.documentElement.scrollTop ===
         document.documentElement.offsetHeight
       ) {
-        loadUsers();
+        this.loadUsers();
       }
     };
   }
@@ -36,7 +36,7 @@ class InfiniteLoader extends Component {
   loadUsers(){
     this.setState({ isLoading: true }, () => {
       request
-        .get("https://randomuser.me/api/?results=1000")
+        .get("https://randomuser.me/api/?results=10")
         .then(results => {
           const nextUsers = results.body.results.map(user => ({
             email: user.email,
@@ -47,6 +47,7 @@ class InfiniteLoader extends Component {
           }));
 
           this.setState({
+
             hasMore: this.state.users.length < 100,
             isLoading: false,
             users: [...this.state.users, ...nextUsers]
@@ -66,10 +67,10 @@ class InfiniteLoader extends Component {
 
     return (
       <div className="App">
-        <h1>Infinite Loading !!!</h1>
-        <p>Scroll down to load more !!</p>
+        <h1>Infinite Users!</h1>
+        <p>Scroll down to load more!!</p>
         {users && users.map(user => (
-          <div key={user.username}>
+          <Fragment key={user.username}>
             <hr />
             <div style={{ display: "flex" }}>
               <img
@@ -88,11 +89,11 @@ class InfiniteLoader extends Component {
                 <p>Email: {user.email}</p>
               </div>
             </div>
-          </div>
+          </Fragment>
         ))}
         <hr />
         {error && <div style={{ color: "#900" }}>{error}</div>}
-        {isLoading && <div>Loading...</div>}
+        {isLoading && <div><b>Loading...</b></div>}
         {!hasMore && <div>You did it! You reached the end!</div>}
       </div>
     );
