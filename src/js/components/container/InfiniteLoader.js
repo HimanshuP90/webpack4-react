@@ -21,8 +21,7 @@ class InfiniteLoader extends Component {
       if (error || isLoading || !hasMore) return;
 
       if (
-        window.innerHeight + document.documentElement.scrollTop ===
-        document.documentElement.offsetHeight
+        window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight
       ) {
         this.loadUsers();
       }
@@ -47,7 +46,6 @@ class InfiniteLoader extends Component {
           }));
 
           this.setState({
-
             hasMore: this.state.users.length < 100,
             isLoading: false,
             users: [...this.state.users, ...nextUsers]
@@ -64,7 +62,6 @@ class InfiniteLoader extends Component {
 
   render() {
     const { error, hasMore, isLoading, users } = this.state;
-
     return (
       <div className="App">
         <h1>Infinite Users!</h1>
