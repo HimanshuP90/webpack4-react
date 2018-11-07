@@ -32,4 +32,42 @@ var flattened = [[0,1], [2,3], [4,5]].reduce(
     },
     []
 );
-console.log(flattened)
+// console.log(flattened)
+
+
+//Grouping objects by a property
+
+var people = [
+    { name: 'Alice', age: 21 },
+    { name: 'Max', age: 20 },
+    { name: 'Jane', age: 20 },
+    { name: 'Bravo', age: 20 },
+];
+
+function groupBy(objectArray, property){
+    return objectArray.reduce(function(acc, obj){
+        var key = obj[property];
+        if (!acc[key]) {
+          acc[key] = [];
+        }
+        acc[key].push(obj);
+        return acc;
+    }, {});
+}
+
+var groupedPeople = groupBy(people, 'age');
+// console.log(groupedPeople);
+
+
+//Remove duplicate items in array
+
+let arr = [1, 2, 1, 2, 3, 5, 4, 5, 3, 4, 4, 4, 4];
+let result =  arr.sort().reduce((accumulator, currentValue) => {
+    const length = accumulator.length
+    if(length == 0 || accumulator[length-1] != currentValue){
+        accumulator.push(currentValue)
+    }
+    return accumulator
+}, []);
+
+console.log(result)
