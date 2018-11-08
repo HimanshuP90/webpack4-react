@@ -70,4 +70,53 @@ let result =  arr.sort().reduce((accumulator, currentValue) => {
     return accumulator
 }, []);
 
-console.log(result)
+console.log(result);
+
+
+/* 
+    3 Steps before it it executed, roughly called "compilation" :
+
+    1) Tokenizing/Lexing:
+         var a = 2;
+         This would likely be broken up into the following tokens:
+         var, a, =, 2 and ;.
+
+    2) Parsing:
+         The tree of var a = 2; might start with a top-level node called VariableDeclaration,
+         with a child node called Identifier(whose value is a), and another child is called 
+         AssignmentExpresion which itself has a child called NumericLiteral (whose value is 2 ) 
+
+    3) Code-Generation: 
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
