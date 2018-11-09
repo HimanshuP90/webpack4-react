@@ -45,11 +45,15 @@ class InfiniteLoader extends Component {
             uuid: user.login.uuid
           }));
 
+          // all time only 10 
+          console.log('nextUsers--', nextUsers)
           this.setState({
             hasMore: this.state.users.length < 100,
             isLoading: false,
             users: [...this.state.users, ...nextUsers]
           });
+          //add users onload i.e. 10->20->30 ...etc
+          console.log('users--', this.state.users)
         })
         .catch(err => {
           this.setState({
