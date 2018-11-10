@@ -42,10 +42,13 @@ class InfiniteLoader extends Component {
             name: Object.values(user.name).join(" "),
             photo: user.picture.medium,
             username: user.login.username,
+            location: user.location.street,
+            city: user.location.city,
+            description: user.location.timezone.description,
             uuid: user.login.uuid
           }));
 
-          // all time only 10 
+          // all time only 10 nextUsers
           console.log('nextUsers--', nextUsers)
           this.setState({
             hasMore: this.state.users.length < 100,
@@ -88,6 +91,8 @@ class InfiniteLoader extends Component {
                 <h2 style={{ marginTop: 0 }}>@{user.username}</h2>
                 <p>Name: {user.name}</p>
                 <p>Email: {user.email}</p>
+                <p>Location: {user.location}, {user.city}</p>
+                <p>Description: {user.description}</p>
               </div>
             </div>
           </Fragment>
